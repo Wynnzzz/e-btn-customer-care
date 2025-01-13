@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>E-BTN Customer Care</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="/src/img/logobtn.png" alt="Logo BTN" class="h-8 w-auto"/>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">BERANDA</a>
+                    <a href="tentang.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">TENTANG KAMI</a>
+                    <a href="layanan.html" class="text-blue-600 border-b-2 border-red-600 px-3 py-2 rounded-md text-sm font-medium">LAYANAN NASABAH</a>
+                    <a href="promo.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">PROMO SPESIAL</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">BERANDA</a>
+                    <a href="tentang.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">TENTANG KAMI</a>
+                    <a href="layanan.html" class="text-blue-600 block px-3 py-2 rounded-md text-base font-medium">LAYANAN NASABAH</a>
+                    <a href="promo.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">PROMO SPESIAL</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-[500px]">
+        <div class="absolute top-0 w-full h-full bg-center bg-cover opacity-20">
+            <img src="/src/img/test1.jpg" alt="Background" class="w-full h-full object-cover"/>
+        </div>
+        <div class="container relative mx-auto">
+            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                <div class="text-gray-900">
+                    <h1 class="text-4xl font-semibold text-blue-600 mb-4">Sahabat Keluarga Indonesia</h1>
+                    <p class="mt-4 text-lg text-gray-600">
+                        PT Bank Tabungan Negara (Persero) Tbk. berkomitmen melayani dan menyediakan tiga produk utama: perbankan perseorangan, bisnis, dan syariah
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="flex px-4 py-3 bg-white shadow-sm rounded-lg mx-4 mt-4">
+        <ol class="flex items-center space-x-1 text-sm">
+            <li><a href="index.html" class="text-gray-500 hover:text-gray-700">Beranda</a></li>
+            <li><span class="text-gray-400 mx-2">/</span></li>
+            <li class="text-blue-600">Layanan Nasabah</li>
+        </ol>
+    </nav>
+
+    <!-- FAQ Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-600 mb-12">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                    <span class="text-lg font-medium">Lupa ID Pengguna Bale By BTN</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                    <ol class="list-decimal list-inside space-y-3">
+                        <li>Pada halaman login Klik tombol <strong>"Lupa ID Pengguna"</strong></li>
+                        <li>Isi kolom Lupa ID Pengguna yang terdiri dari Nomor Kartu ATM, Nomor Telepon, Tanggal Lahir, Masa Berlaku Kartu ATM, dan CVV</li>
+                        <li>Klik tombol <strong>"Lanjut"</strong></li>
+                        <li>Setelah klik Lanjut pada halaman Syarat & Ketentuan, user diarahkan ke halaman SMS Verifikasi</li>
+                        <li>Masukkan kode OTP yang diterima dari nomor telepon terdaftar</li>
+                        <li>Setelah Verifikasi OTP berhasil, lanjutkan proses dengan klik tombol <strong>"Buat ID Pengguna & Kata Sandi"</strong></li>
+                        <li>Buat ID Pengguna & Kata Sandi baru</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                    <span class="text-lg font-medium">Lupa Kata Sandi Bale by BTN</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                    <ol class="list-decimal list-inside space-y-3">
+                        <li>Klik Tombol <strong>"Lupa Kata Sandi"</strong></li>
+                        <li>Isi kolom Lupa Kata Sandi dengan data yang diperlukan</li>
+                        <li>Klik tombol <strong>"Lanjut"</strong></li>
+                        <li>Ikuti proses verifikasi SMS</li>
+                        <li>Masukkan kode OTP</li>
+                        <li>Buat kata sandi baru</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                    <span class="text-lg font-medium">Cardless Withdrawal atau Penarikan Tanpa Kartu</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-3">Pada Aplikasi balé by BTN</h4>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li>Pilih menu tanpa kartu</li>
+                                <li>Pilih menu buat kode</li>
+                                <li>Pilih sumber dana</li>
+                                <li>Masukkan nominal</li>
+                                <li>Ikuti instruksi selanjutnya</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-3">Pada ATM</h4>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li>Pilih menu balé by BTN Withdrawal</li>
+                                <li>Masukkan no HP terdaftar</li>
+                                <li>Input Kode Token</li>
+                                <li>Ambil uang dan resi transaksi</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+              <!-- FAQ 1 -->
+              <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                  <span class="text-lg font-medium">Layanan Pemblokiran Kartu ATM</span>
+                  <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                  <p class="font-medium text-lg mb-4">Langkah Blokir Kartu ATM melalui balé by BTN:</p>
+                  <ol class="list-decimal list-inside space-y-2">
+                    <li>Buka aplikasi balé by BTN kemudian pilih tombol <strong>"Masuk"</strong></li>
+                    <li>Silakan mengisi ID Pengguna dan Kata Sandi lalu klik <strong>"Masuk"</strong></li>
+                    <li>Pilih ikon <strong>"Pengaturan"</strong></li>
+                    <li>Pilih menu <strong>"Layanan Kartu ATM"</strong></li>
+                    <li>Akan tertampil nomor rekening dan nomor kartu ATM yang terhubung dengan aplikasi balé by BTN</li>
+                    <li>Pilih nomor rekening dan nomor kartu ATM yang akan dilakukan pemblokiran</li>
+                    <li>Pilih <strong>"Blokir Kartu ATM"</strong></li>
+                    <li>Isi alasan pemblokiran, unggah dokumen opsional, dan centang persetujuan</li>
+                    <li>Pilih <strong>"Blokir"</strong></li>
+                    <li>Masukkan 6 digit MPIN</li>
+                    <li>Blokir kartu ATM telah berhasil</li>
+                  </ol>
+                </div>
+              </div>
+            
+              <!-- FAQ 2 -->
+              <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                  <span class="text-lg font-medium">Bagaimana Cara Pelunasan Kredit Bank BTN?</span>
+                  <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                  <video class="w-4/5 mx-auto block" controls>
+                    <source src="vid/faq5.mp4" type="video/mp4" />
+                    Video gagal ditampilkan.
+                  </video>
+                </div>
+              </div>
+            
+              <!-- FAQ 3 -->
+              <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                  <span class="text-lg font-medium">Bagaimana Cara Pengajuan Restrukturisasi Kredit Bank BTN?</span>
+                  <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                  <p>Bagi kamu yang ingin mengajukan restrukturisasi kredit, simak langkah-langkahnya di bawah ini!</p>
+                  <ol class="list-decimal list-inside space-y-2">
+                    <li class="font-semibold">Pengajuan permohonan restrukturisasi kredit kepada lembaga keuangan</li>
+                    <p>Langkah pertama adalah mengunjungi atau menghubungi lembaga keuangan tempat kamu mengajukan pinjaman.</p>
+                    <li class="font-semibold">Lembaga keuangan akan melakukan penilaian</li>
+                    <p>Lembaga keuangan mengevaluasi apakah pengecualian bisa diberikan.</p>
+                    <li class="font-semibold">Kelengkapan persyaratan restrukturisasi</li>
+                    <p>Bank menjelaskan proses pengajuan dan persyaratan utama:</p>
+                    <ul class="list-disc list-inside pl-5 space-y-2">
+                      <li>Penyerahan dokumen yang diperlukan</li>
+                      <li>Evaluasi bank atas permohonan debitur</li>
+                      <li>Menyetujui usulan restrukturisasi</li>
+                      <li>Menandatangani perjanjian kredit baru</li>
+                    </ul>
+                    <li class="font-semibold">Informasi persetujuan atau penolakan</li>
+                    <p>Kamu akan diberitahu setelah proses penilaian selesai.</p>
+                  </ol>
+                </div>
+              </div>
+            
+              <!-- FAQ 4 -->
+              <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                  <span class="text-lg font-medium">Program Tambahan Fasilitas Kredit (Top Up) untuk Nasabah</span>
+                  <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                  </svg>
+                </button>
+                <div class="hidden bg-white p-6">
+                  <p>Fasilitas kredit bagi debitur eksisting Bank BTN yang terpilih...</p>
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>Angsuran terjangkau</li>
+                    <li>Proses cepat tanpa agunan tambahan</li>
+                    <li>Jangka waktu hingga 10 tahun</li>
+                    <li>Bebas biaya pengikatan</li>
+                    <li>Bebas biaya appraisal</li>
+                    <li>Diskon 50% untuk administrasi</li>
+                    <li>Diskon 50% untuk provisi</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle functionality
+        document.querySelectorAll('.border').forEach(faq => {
+            const btn = faq.querySelector('button');
+            const content = faq.querySelector('div.hidden');
+            const icon = btn.querySelector('svg');
+            
+            btn.addEventListener('click', () => {
+                // Close all other FAQs
+                document.querySelectorAll('.border').forEach(otherFaq => {
+                    if (otherFaq !== faq) {
+                        const otherContent = otherFaq.querySelector('div.hidden');
+                        const otherIcon = otherFaq.querySelector('svg');
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-45');
+                    }
+                });
+
+                // Toggle current FAQ
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-45');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
