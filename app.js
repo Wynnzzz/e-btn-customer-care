@@ -31,3 +31,18 @@ document.querySelectorAll('video').forEach(video => {
         event.stopPropagation(); 
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const faqContainer = document.getElementById('faq-container');
+    let hasScrolled = false;
+
+    function onScroll() {
+      if (!hasScrolled && window.scrollY > 50) { // Trigger ketika scroll lebih dari 50px
+        faqContainer.classList.add('visible');
+        hasScrolled = true;
+        window.removeEventListener('scroll', onScroll); // Hapus event listener setelah animasi
+      }
+    }
+
+    window.addEventListener('scroll', onScroll);
+  });
