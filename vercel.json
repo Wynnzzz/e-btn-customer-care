@@ -1,5 +1,10 @@
 {
-    "rewrites": [
-      {"source": "/:a*", "destination": "/"}
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/((?!img/|vid/).*)",
+      "destination": "/"
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
