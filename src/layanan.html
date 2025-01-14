@@ -40,8 +40,7 @@
             <!-- Mobile menu -->
             <div id="mobile-menu" class="hidden md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="index.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">BERANDA</a>
-                    <a href="tentang.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">TENTANG KAMI</a>
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">TENTANG KAMI</a>
                     <a href="layanan.html" class="text-blue-600 block px-3 py-2 rounded-md text-base font-medium">LAYANAN NASABAH</a>
                     <a href="promo.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">PROMO SPESIAL</a>
                 </div>
@@ -52,14 +51,14 @@
     <!-- Hero Section -->
     <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-[500px]">
         <div class="absolute top-0 w-full h-full bg-center bg-cover opacity-20">
-            <img src="/public/img/test1.jpg" alt="Background" class="w-full h-full object-cover"/>
+            <img src="/public/img/room2.jpg" alt="Background" class="w-full h-full object-cover"/>
         </div>
         <div class="container relative mx-auto">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div class="text-gray-900">
-                    <h1 class="text-4xl font-semibold text-blue-600 mb-4">Sahabat Keluarga Indonesia</h1>
+                    <h1 class="text-4xl font-semibold text-blue-600 mb-4">Layanan Kami</h1>
                     <p class="mt-4 text-lg text-gray-600">
-                        PT Bank Tabungan Negara (Persero) Tbk. berkomitmen melayani dan menyediakan tiga produk utama: perbankan perseorangan, bisnis, dan syariah
+                        E- BTN Customer Care - Layanan untuk nasabah Bank BTN seputar Produk, Informasi Layanan, Klaim, dan lainnya
                     </p>
                 </div>
             </div>
@@ -69,8 +68,6 @@
     <!-- Breadcrumb -->
     <nav class="flex px-4 py-3 bg-white shadow-sm rounded-lg mx-4 mt-4">
         <ol class="flex items-center space-x-1 text-sm">
-            <li><a href="index.html" class="text-gray-500 hover:text-gray-700">Beranda</a></li>
-            <li><span class="text-gray-400 mx-2">/</span></li>
             <li class="text-blue-600">Layanan Nasabah</li>
         </ol>
     </nav>
@@ -190,10 +187,15 @@
                   </svg>
                 </button>
                 <div class="hidden bg-white p-6">
-                  <video class="w-4/5 mx-auto block" controls>
-                    <source src="/public/vid/faq5.mp4" type="video/mp4" />
-                    Video gagal ditampilkan.
-                  </video>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li>Persyaratan yang wajib dibawah berupa</li>
+                        <ul class="list-disc list-inside pl-5 space-y-2">
+                          <li>KTP</li>
+                          <li>Buku Tabungan</li>
+                          <li>Kartu ATM</li>
+                        </ul>
+                        <li>Pengambilan dokumen bisa dilakukan pada tanggal yang sama saat pelunasan</li>
+                      </ol>
                 </div>
               </div>
             
@@ -268,23 +270,73 @@
             const btn = faq.querySelector('button');
             const content = faq.querySelector('div.hidden');
             const icon = btn.querySelector('svg');
-            
-            btn.addEventListener('click', () => {
-                // Close all other FAQs
-                document.querySelectorAll('.border').forEach(otherFaq => {
-                    if (otherFaq !== faq) {
-                        const otherContent = otherFaq.querySelector('div.hidden');
-                        const otherIcon = otherFaq.querySelector('svg');
-                        otherContent.classList.add('hidden');
-                        otherIcon.classList.remove('rotate-45');
+            const video = faq.querySelector('video');
+            const faqs=document.querySelectorAll(".faq")
+        
+            btn.addEventListener('click', event => {
+                event.stopPropagation();
+        
+                // Jika FAQ sudah aktif, tutup dan reset
+                if (faq.classList.contains('active')) {
+                    faq.classList.remove('active');
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-45');
+        
+                    if (video) {
+                        video.pause();
+                        video.currentTime = 0;
                     }
-                });
+                } else {
+                    // Tambahkan class aktif ke FAQ yang diklik
+                    faq.classList.add('active');
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-45');
 
-                // Toggle current FAQ
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-45');
+                    
+                    // Tutup FAQ lain
+                    document.querySelectorAll('.border').forEach(otherFaq => {
+                        if (otherFaq !== faq) {
+                            const otherContent = otherFaq.querySelector('div.hidden');
+                            const otherIcon = otherFaq.querySelector('svg');
+                            const otherVideo = otherFaq.querySelector('video');
+        
+                            otherFaq.classList.remove('active');
+                            otherContent.classList.add('hidden');
+                            otherIcon.classList.remove('rotate-45');
+        
+                            if (otherVideo) {
+                                otherVideo.pause();
+                                otherVideo.currentTime = 0;
+                            }
+                        }
+                    });
+                }
             });
         });
+        
+        // Mencegah interaksi video menutup FAQ
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('click', event => {
+                event.stopPropagation();
+            });
+        });
+        
+        // Animasi scroll untuk FAQ
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqContainer = document.getElementById('faq-container');
+            let hasScrolled = false;
+        
+            function onScroll() {
+                if (!hasScrolled && window.scrollY > 50) {
+                    faqContainer.classList.add('visible');
+                    hasScrolled = true;
+                    window.removeEventListener('scroll', onScroll);
+                }
+            }
+        
+            window.addEventListener('scroll', onScroll);
+        });
+        
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
@@ -292,6 +344,10 @@
                 mobileMenu.classList.add('hidden');
             }
         });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
     </script>
 </body>
 </html>

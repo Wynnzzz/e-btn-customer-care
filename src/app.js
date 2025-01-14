@@ -1,30 +1,34 @@
 const faqs = document.querySelectorAll(".faq");
 
-faqs.forEach((faq) => {
+document.querySelectorAll('.border').forEach(faq => {
     faq.addEventListener("click", (event) => {
-        event.stopPropagation()
+        event.stopPropagation(); // Mencegah event bubbling
 
+        // Jika FAQ sudah aktif, tutup dan hentikan video (jika ada)
         if (faq.classList.contains("active")) {
             faq.classList.remove("active");
             const video = faq.querySelector('video');
             if (video) {
-                video.pause(); 
-                video.currentTime = 0; 
+                video.pause();
+                video.currentTime = 0;
             }
         } else {
+            // Aktifkan FAQ yang diklik dan nonaktifkan lainnya
             faq.classList.add("active");
-            faqs.forEach((otherfaq) => {
-                if (otherfaq !== faq) {
-                    otherfaq.classList.remove("active");
-                    const video = otherfaq.querySelector('video');
+            document.querySelectorAll('.border').forEach(otherFaq => {
+                if (otherFaq !== faq) {
+                    otherFaq.classList.remove("active");
+                    const video = otherFaq.querySelector('video');
                     if (video) {
                         video.pause();
+                        video.currentTime = 0; // Reset video
                     }
                 }
             });
         }
     });
 });
+
 
 document.querySelectorAll('video').forEach(video => {
     video.addEventListener('click', (event) => {
