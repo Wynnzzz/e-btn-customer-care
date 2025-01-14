@@ -1,207 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>E-BTN Customer Care</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, sans-serif;
         }
-
-        body {
-            background-color: #f8f8f8;
-        }
-
-        .nav-wrapper {
-            background: white;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #666;
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #333;
-        }
-
-        .nav-link.active {
-            color: #125EFA;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: red;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-links {
-                display: none;
-            }
-        }
-
-        .content {
-            margin-top: 80px;
-            padding: 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .brand {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo {
-            height: 40px;
-            width: auto; 
-        }
-
-        .background-city-fixed {
-            position: fixed;
-            top: 0px; 
-            left: 0;
-            width: 100%;
-            height: 600px;
-            background-image: url('img/test1.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.2;
-            display: block;
-            z-index: -1;
-        }
-
-        .breadcrumb {
-            font-size: 14px;
-            color: #666;
-            margin: 250px 20px 0; /* Adjust top margin to ensure it appears below the background image */
-            text-align: center;
-            display: block;
-            position: relative;
-            z-index: 1;
-        }
-
-        .breadcrumb a {
-            text-decoration: none;
-            color: #125efa;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Section Title */
-        .section-title {
-            text-align: left;
-            margin: 130px 0;
-            padding: 0 20px;
-            width: 50%;
-            text-wrap: break-word;
-        }
-        
-        .section-title h1 {
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .section-title p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
     </style>
 </head>
-<body>
-    <div class="nav-wrapper">
-        <nav class="navbar">
-            <a href="#" class="brand">
-                <img src="img/logobtn.png" alt="Logo BTN" class="logo">
-            </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link active">BERANDA</a>
-                <a href="tentang.html" class="nav-link">TENTANG KAMI</a>
-                <a href="layanan.html" class="nav-link">LAYANAN NASABAH</a>
-                <a href="promo.html" class="nav-link">PROMO SPESIAL</a>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="/public/img/logobtn.png" alt="Logo BTN" class="h-8 w-auto"/>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-blue-600 border-b-2 border-red-600 px-3 py-2 rounded-md text-sm font-medium">TENTANG KAMI</a>
+                    <a href="layanan.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">LAYANAN NASABAH</a>
+                    <a href="promo.html" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">PROMO SPESIAL</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </nav>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">BERANDA</a>
+                    <a href="tentang.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">TENTANG KAMI</a>
+                    <a href="layanan.html" class="text-blue-600 block px-3 py-2 rounded-md text-base font-medium">LAYANAN NASABAH</a>
+                    <a href="promo.html" class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">PROMO SPESIAL</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-[500px]">
+        <div class="absolute top-0 w-full h-full bg-center bg-cover opacity-20">
+            <img src="/public/img/test1.jpg" alt="Background" class="w-full h-full object-cover"/>
+        </div>
+        <div class="container relative mx-auto">
+            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                <div class="text-gray-900">
+                    <h1 class="text-4xl font-semibold text-blue-600 mb-4">Sahabat Keluarga Indonesia</h1>
+                    <p class="mt-4 text-lg text-gray-600">
+                        PT Bank Tabungan Negara (Persero) Tbk. berkomitmen melayani dan menyediakan tiga produk utama: perbankan perseorangan, bisnis, dan syariah
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="content">
-        <div class="customer-service">
-            <div class="background-city-fixed"></div>
+
+    <!-- Breadcrumb -->
+    <nav class="flex px-4 py-3 bg-white shadow-sm rounded-lg mx-4 mt-4">
+        <ol class="flex items-center space-x-1 text-sm">
+            <li><a href="index.html" class="text-gray-500 hover:text-gray-700">Beranda</a></li>
+            <li><span class="text-gray-400 mx-2">/</span></li>
+            <li class="text-blue-600">Layanan Nasabah</li>
+        </ol>
+    </nav>
+
+    <script src="app.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle functionality
+        document.querySelectorAll('.border').forEach(faq => {
+            const btn = faq.querySelector('button');
+            const content = faq.querySelector('div.hidden');
+            const icon = btn.querySelector('svg');
             
-            <div class="section-title">
-                <p>Layanan Kami</p>
-                <h1 style="color: #125efa;">E-BTN Customer Care</h1>
-                <p>Layanan untuk nasabah Bank BTN seputar Produk, Informasi Layanan, Klaim, dan lainnya</p>
-            </div>
-        </div>
-        <div class="breadcrumb">
-            <a href="index.html", style="color: gray;">Beranda</a>
-        </div>
-        <hr style="height:0.1px;border-width:0;color:gray;background-color:gray;margin-top:20px;">
-    </div>
+            btn.addEventListener('click', () => {
+                // Close all other FAQs
+                document.querySelectorAll('.border').forEach(otherFaq => {
+                    if (otherFaq !== faq) {
+                        const otherContent = otherFaq.querySelector('div.hidden');
+                        const otherIcon = otherFaq.querySelector('svg');
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-45');
+                    }
+                });
+
+                // Toggle current FAQ
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-45');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
