@@ -15,6 +15,32 @@
           font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
             Roboto, sans-serif;
         }
+
+        .custom-shape-divider-bottom-1736844321 {
+            position: absolute;
+            bottom: -170px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            z-index: -1; /* Pastikan SVG berada di belakang elemen lainnya */
+        }
+        
+        .custom-shape-divider-bottom-1736844321 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+        
+        .custom-shape-divider-bottom-1736844321 .shape-fill {
+            fill: #EBEBEB; /* Warna wave, bisa diubah */
+        }
+
+        .tentang-kami{
+            background-color: #EBEBEB;
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -50,7 +76,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-[500px]">
+    <div class="relative pt-16 pb-8 flex content-center items-center justify-center min-h-[500px]">
         <div class="absolute top-0 w-full h-full bg-center bg-cover opacity-20">
             <img src="img/room1.jpg" alt="Background" class="w-full h-full object-cover"/>
         </div>
@@ -84,67 +110,74 @@
             </p>
         </div>
     </div>
-    
 
-      <div class="flex justify-center items-center space-x-10 p-6 mb-20" data-aos="fade-up" data-aos-duration="600">
-        <!-- First Card -->
-        <div class="bg-white rounded-lg shadow-md p-6 w-full sm:w-1/3 text-center">
-          <div class="w-48 h-48 mx-auto mb-4">
-            <img src="img/gambar1.png" alt="E-BTN Customer Care" class="rounded-full bg-gray-100 p-2">
-          </div>
-          <h2 class="text-xl font-semibold text-gray-800">E-BTN Customer Care</h2>
-        </div>
-        <!-- Second Card -->
-        <div class="bg-white rounded-lg shadow-md p-6 w-full sm:w-1/3 text-center">
-          <div class="w-52 h-52 mx-auto mb-2">
-            <img src="img/gambar2.png" alt="I-Care Room" class="rounded-full bg-gray-200 p-2">
-          </div>
-          <h2 class="text-xl font-semibold text-gray-800">I-Care Room</h2>
-        </div>
+    <div class="custom-shape-divider-bottom-1736844321 -mt-20 opacity-60">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
     </div>
 
-    <div class="w-full sm:w-3/4 mx-auto mb-20 px-4">
-        <div class="space-y-4">
-            <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 text-center">
-                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
-                    <span class="text-lg font-medium">
-                        <p class="flex text-center">Langkah - Langkah Layanan E-BTN Customer Care</p>
-                    </span>
-                    <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                </button>
-                <div class="hidden bg-white p-6">
-                    <div class="mt-2 mb-6 text-justify">
-                        <h2 class="text-lg font-semibold text-gray-700 mb-2 text-left">1. Pemindaian QR-Code</h2>
-                        <p class="text-gray-600 leading-relaxed ">
-                            Nasabah melakukan pemindaian QR-Code tersedia pada meja nomor antrian yang nantinya akan tersambung pada web <strong>E-BTN Customer Care</strong>. Nasabah diarahkan pada ruang tunggu / antrian dan bisa mengakses web BTN Care guna mendapatkan informasi klaim baik terkait permasalahan Tabungan, Investasi, hingga Kredit.
-                        </p>
-                    </div>
-                    
-                    <!-- Langkah 2 -->
-                    <div class="mb-6 text-justify">
-                        <h2 class="text-lg font-semibold text-gray-700 mb-2">2. Informasi Layanan dan Pengaduan</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            <strong>E-BTN Customer Care</strong> memberikan informasi layanan dan pengaduan nasabah serta dilengkapi dengan FAQ (Frequently Asked Questions). Melalui fitur ini, nasabah akan mendapatkan tiket nomor antrian untuk mendapatkan pelayanan di meja layanan Customer Service / Loan Service ataupun pada ruang <strong>I-Care Room</strong>.
-                        </p>
+    <div class="tentang-kami -mt-3">
+        <div class="flex justify-center items-center space-x-10 p-6 mb-20" data-aos="fade-up" data-aos-duration="600">
+            <!-- First Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 w-full sm:w-1/3 text-center">
+              <div class="w-48 h-48 mx-auto mb-4">
+                <img src="img/gambar1.png" alt="E-BTN Customer Care" class="rounded-full bg-gray-100 p-2">
+              </div>
+              <h2 class="text-xl font-semibold text-gray-800">E-BTN Customer Care</h2>
+            </div>
+            <!-- Second Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 w-full sm:w-1/3 text-center">
+              <div class="w-52 h-52 mx-auto">
+                <img src="img/gambar2.png" alt="I-Care Room" class="rounded-full bg-gray-200 p-2">
+              </div>
+              <h2 class="text-xl font-semibold text-gray-800">I-Care Room</h2>
+            </div>
+        </div>
+    
+        <div class="w-full sm:w-3/4 mx-auto mb-20 px-4 py-4">
+            <div class="space-y-4">
+                <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 text-center">
+                    <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                        <span class="text-lg font-medium">
+                            <p class="flex text-center">Langkah - Langkah Layanan E-BTN Customer Care</p>
+                        </span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden bg-white p-6">
+                        <div class="mt-2 mb-6 text-justify">
+                            <h2 class="text-lg font-semibold text-gray-700 mb-2 text-left">1. Pemindaian QR-Code</h2>
+                            <p class="text-gray-600 leading-relaxed ">
+                                Nasabah melakukan pemindaian QR-Code tersedia pada meja nomor antrian yang nantinya akan tersambung pada web <strong>E-BTN Customer Care</strong>. Nasabah diarahkan pada ruang tunggu / antrian dan bisa mengakses web BTN Care guna mendapatkan informasi klaim baik terkait permasalahan Tabungan, Investasi, hingga Kredit.
+                            </p>
+                        </div>
+                        
+                        <!-- Langkah 2 -->
+                        <div class="mb-6 text-justify">
+                            <h2 class="text-lg font-semibold text-gray-700 mb-2">2. Informasi Layanan dan Pengaduan</h2>
+                            <p class="text-gray-600 leading-relaxed">
+                                <strong>E-BTN Customer Care</strong> memberikan informasi layanan dan pengaduan nasabah serta dilengkapi dengan FAQ (Frequently Asked Questions). Melalui fitur ini, nasabah akan mendapatkan tiket nomor antrian untuk mendapatkan pelayanan di meja layanan Customer Service / Loan Service ataupun pada ruang <strong>I-Care Room</strong>.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 text-center">
-                <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
-                    <span class="text-lg font-medium">
-                        <p class="flex text-center">Pelayanan di I-Care Room</p>
-                    </span>
-                    <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                </button>
-                <div class="hidden bg-white p-6">
-                    <div class="mb-6 text-justify">
-                        <p class="text-gray-600 leading-relaxed">
-                            Nasabah yang telah mendapatkan tiket khusus untuk melanjutkan proses klaim akan diarahkan pada <strong>I-Care Room</strong> guna mendapatkan pelayanan yang tepat dan cepat sesuai yang dibutuhkan oleh nasabah sampai permasalahan terselesaikan.
-                        </p>
+                <div class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 text-center">
+                    <button class="w-full flex justify-between items-center p-4 bg-blue-600 bg-opacity-80 hover:bg-opacity-100 text-white transition-all duration-300">
+                        <span class="text-lg font-medium">
+                            <p class="flex text-center">Pelayanan di I-Care Room</p>
+                        </span>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden bg-white p-6">
+                        <div class="mb-6 text-justify">
+                            <p class="text-gray-600 leading-relaxed">
+                                Nasabah yang telah mendapatkan tiket khusus untuk melanjutkan proses klaim akan diarahkan pada <strong>I-Care Room</strong> guna mendapatkan pelayanan yang tepat dan cepat sesuai yang dibutuhkan oleh nasabah sampai permasalahan terselesaikan.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
