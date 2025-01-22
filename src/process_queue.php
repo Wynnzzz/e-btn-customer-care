@@ -1,92 +1,87 @@
 <?php
 // process_queue.php
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
 
-if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    exit(0);
+// Enable CORS if needed
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
+
+// Handle preflight requests
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
 }
 
-$db_host = 'localhost:3307';
-$db_user = 'root';
-$db_pass = '23082004';
-$db_name = 'e-btn-customer-care';
-
-// Create connection
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-// Check connection
-if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'error' => "Connection failed: " . $conn->connect_error]));
+// Only allow POST requests
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'error' => 'Method not allowed']);
+    exit();
 }
 
-// Set charset
-$conn->set_charset("utf8mb4");
+// Get JSON data
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
 
-// Function to get the next queue number
-function getNextQueueNumber($conn, $type) {
-    $table = ($type === 'cs') ? 'cs_service_queue' : 'icare_room_queue';
-    $prefix = ($type === 'cs') ? 'A' : 'B';
+// Validate input
+if (!isset($data['name']) || !isset($data['email']) || !isset($data['message'])) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'error' => 'Missing required fields']);
+    exit();
+}
+
+// Database configuration
+$host = 'localhost';
+$dbname = 'e-btn-customer-care';
+$username = 'root';
+$password = '23082004';
+
+try {
+    // Create database connection
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "SELECT queue_number_cs FROM $table 
-            WHERE DATE(created_at_cs) = CURDATE() 
-            ORDER BY id DESC LIMIT 1";
+    // Get today's last queue number
+    $stmt = $pdo->query("SELECT queue_number FROM tickets 
+                        WHERE DATE(created_at) = CURDATE() 
+                        ORDER BY id DESC LIMIT 1");
+    $lastQueue = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $lastNumber = intval(substr($row['queue_number'], 1));
-        $nextNumber = $lastNumber + 1;
+    // Generate new queue number
+    if ($lastQueue) {
+        $lastNumber = intval(substr($lastQueue['queue_number'], 1));
+        $newNumber = $lastNumber + 1;
     } else {
-        $nextNumber = 1;
+        $newNumber = 1;
     }
     
-    return $prefix . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
-}
+    // Format queue number
+    $queueNumber = 'A' . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
+    
+    // Insert new ticket
+    $stmt = $pdo->prepare("INSERT INTO tickets (queue_number, name, email, complaint, created_at, status) 
+                          VALUES (?, ?, ?, ?, NOW(), 'pending')");
+    
+    $stmt->execute([
+        $queueNumber,
+        $data['name'],
+        $data['email'],
+        $data['message']
+    ]);
+    
+    // Send success response
+    echo json_encode([
+        'success' => true,
+        'queueNumber' => $queueNumber
+    ]);
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
-    $name = $conn->real_escape_string($_POST['name']);
-    $email = $conn->real_escape_string($_POST['email']);
-    $complaint = $conn->real_escape_string($_POST['message']);
-    $type = $conn->real_escape_string($_POST['type']); // 'cs' or 'icare'
-    
-    // Determine which table to use
-    $table = ($type === 'cs') ? 'cs_service_queue' : 'icare_room_queue';
-    
-    // Generate queue number
-    $queueNumber = getNextQueueNumber($conn, $type);
-    
-    // Insert into database
-    $sql = "INSERT INTO $table (queue_number, name, email, complaint) 
-            VALUES (?, ?, ?, ?)";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $queueNumber, $name, $email, $complaint);
-    
-    if ($stmt->execute()) {
-        echo json_encode([
-            'success' => true,
-            'queueNumber' => $queueNumber
-        ]);
-    } else {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Database error'
-        ]);
-    }
-    
-    $stmt->close();
-} else {
+} catch(PDOException $e) {
+    // Send error response
+    http_response_code(500);
     echo json_encode([
         'success' => false,
-        'error' => 'Invalid request method'
+        'error' => 'Database error: ' . $e->getMessage()
     ]);
 }
-
-$conn->close();
 ?>

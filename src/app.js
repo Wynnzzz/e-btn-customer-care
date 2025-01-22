@@ -112,7 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
   }
 
-  const SLIDE_WIDTH = 20; // 20% karena w-1/5
+  // Function to get slide width based on screen size
+  function getSlideWidth() {
+    return window.innerWidth < 768 ? 50 : 20; // 50% for mobile, 20% for desktop
+  }
+
+  let SLIDE_WIDTH = getSlideWidth();
   let currentTranslate = 0;
   let isDragging = false;
   let isTransitioning = false;
@@ -127,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Clone slides and add to beginning and end
-    const cloneCount = slides.length; // Satu set slide asli di awal dan akhir
+    const cloneCount = slides.length;
 
     // Clone for beginning
     for (let i = 0; i < cloneCount; i++) {
@@ -142,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Set initial position to show first original slide
+    SLIDE_WIDTH = getSlideWidth();
     currentTranslate = -cloneCount * SLIDE_WIDTH;
     updatePosition(false);
   }
@@ -153,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function checkBoundary() {
     const totalSlides = container.children.length;
-    const cloneCount = slides.length; // Jumlah slide kloning di awal/akhir
+    const cloneCount = slides.length;
     const originalSlidesStart = cloneCount;
     const originalSlidesEnd = totalSlides - cloneCount;
 
@@ -187,6 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Event Listeners
   leftButton.addEventListener("click", () => slide(1));
   rightButton.addEventListener("click", () => slide(-1));
+
+  // Handle resize
+  window.addEventListener('resize', () => {
+    SLIDE_WIDTH = getSlideWidth();
+    initializeSlides();
+  });
 });
 
 // Image Container I Care Room
@@ -230,7 +242,12 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
   }
 
-  const SLIDE_WIDTH = 25; // 25% karena w-1/4
+  // Function to get slide width based on screen size
+  function getSlideWidth() {
+    return window.innerWidth < 768 ? 50 : 25; // 50% for mobile, 20% for desktop
+  }
+
+  let SLIDE_WIDTH = getSlideWidth();
   let currentTranslate = 0;
   let isDragging = false;
   let isTransitioning = false;
@@ -245,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Clone slides and add to beginning and end
-    const cloneCount = slides.length; // Satu set slide asli di awal dan akhir
+    const cloneCount = slides.length;
 
     // Clone for beginning
     for (let i = 0; i < cloneCount; i++) {
@@ -260,6 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Set initial position to show first original slide
+    SLIDE_WIDTH = getSlideWidth();
     currentTranslate = -cloneCount * SLIDE_WIDTH;
     updatePosition(false);
   }
@@ -271,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function checkBoundary() {
     const totalSlides = container.children.length;
-    const cloneCount = slides.length; // Jumlah slide kloning di awal/akhir
+    const cloneCount = slides.length;
     const originalSlidesStart = cloneCount;
     const originalSlidesEnd = totalSlides - cloneCount;
 
@@ -305,6 +323,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Event Listeners
   leftButton.addEventListener("click", () => slide(1));
   rightButton.addEventListener("click", () => slide(-1));
+
+  // Handle resize
+  window.addEventListener('resize', () => {
+    SLIDE_WIDTH = getSlideWidth();
+    initializeSlides();
+  });
 });
 
 // Tentang Kami Image
@@ -316,12 +340,12 @@ const cardData = {
       {
         title: "1. Pemindaian QR-Code",
         content:
-          "Nasabah melakukan pemindaian QR-Code tersedia pada meja nomor antrian yang nantinya akan tersambung pada web E-BTN Customer Care. Nasabah diarahkan pada ruang tunggu / antrian dan bisa mengakses web BTN Care guna mendapatkan informasi klaim baik terkait permasalahan Tabungan, Investasi, hingga Kredit.",
+          "Nasabah melakukan pemindaian QR-Code tersedia pada meja nomor antrian yang nantinya akan tersambung pada web E-BTN Customer Care. Nasabah diarahkan pada ruang tunggu / antrian dan bisa mengakses web BTN Care guna mendapatkan informasi pengaduan baik terkait permasalahan Tabungan, Investasi, hingga Kredit.",
       },
       {
         title: "2. Informasi Layanan dan Pengaduan",
         content:
-          "E-BTN Customer Care memberikan informasi layanan dan pengaduan nasabah serta dilengkapi dengan FAQ (Frequently Asked Questions). Melalui fitur ini, nasabah akan mendapatkan tiket nomor antrian untuk mendapatkan pelayanan di meja layanan Customer Service / Loan Service ataupun pada ruang I-Care Room.",
+          "E-BTN Customer Care memberikan informasi layanan dan pengaduan nasabah serta dilengkapi dengan FAQ (Frequently Asked Questions). Melalui fitur ini, nasabah akan mendapatkan tiket nomor antrian untuk mendapatkan pelayanan di ruang I-Care Room.",
       },
     ],
   },
@@ -331,7 +355,7 @@ const cardData = {
       {
         title: "Pelayanan di I-Care Room",
         content:
-          "Nasabah yang telah mendapatkan tiket khusus untuk melanjutkan proses klaim akan diarahkan pada I-Care Room guna mendapatkan pelayanan yang tepat dan cepat sesuai yang dibutuhkan oleh nasabah sampai permasalahan terselesaikan.",
+          "Nasabah yang telah mendapatkan tiket khusus untuk melanjutkan proses pengaduan akan diarahkan pada I-Care Room guna mendapatkan pelayanan yang cepat dan tepat sesuai dengan kebutuhan nasabah hingga permasalahan terselesaikan.",
       },
     ],
   },

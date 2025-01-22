@@ -67,7 +67,7 @@
         <div class="text-gray-900">
           <h1 class="text-4xl font-semibold text-blue-600 mb-4">Layanan Kami</h1>
           <p class="mt-4 text-lg text-gray-600">
-            E- BTN Customer Care - Layanan untuk nasabah Bank BTN seputar Produk, Informasi Layanan, Klaim, dan lainnya
+            E- BTN Customer Care - Layanan untuk nasabah Bank BTN seputar Informasi Layanan, Pengaduan, dan lainnya
           </p>
         </div>
       </div>
@@ -84,7 +84,7 @@
   <!-- FAQ Section -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h2 class="text-3xl font-bold text-center text-blue-600 mb-12" data-aos="fade-up" data-aos-duration="600">Frequently
-      Asked Questions</h2>
+      Asked Questions (FAQ)</h2>
 
     <div class="space-y-4">
       <!-- FAQ Item 1 -->
@@ -318,6 +318,7 @@
       </button>
     </div>
   </div>
+
   <!-- AJUKAN ANTRIAN -->
   <!-- Tombol Daftar -->
   <button id="registerBtn"
@@ -669,52 +670,65 @@
     const closeTicketBtn = document.getElementById('closeTicketBtn');
     const queueNumberEl = document.getElementById('queueNumber');
 
-    // Event Listeners
+    // Open form overlay
     registerBtn.addEventListener('click', () => {
       formOverlay.classList.remove('hidden');
     });
 
+    // Close form overlay
     closeFormBtn.addEventListener('click', () => {
       formOverlay.classList.add('hidden');
     });
 
-    registrationForm?.addEventListener('submit', async (e) => {
+    // Form submission
+    // Ganti kode form submission yang lama dengan yang ini
+    registrationForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      try {
-        const formData = new FormData(registrationForm);
-        formData.append('type', registrationForm.dataset.type);
+      const formData = {
+        name: registrationForm.querySelector('input[name="name"]').value,
+        email: registrationForm.querySelector('input[name="email"]').value,
+        message: registrationForm.querySelector('textarea[name="message"]').value
+      };
 
-        const response = await fetch('submit_form.php', {
+      try {
+        const response = await fetch('process_queue.php', {
           method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
 
         if (data.success) {
+          // Reset form
+          registrationForm.reset();
+
+          // Hide form overlay
           formOverlay.classList.add('hidden');
+
+          // Show ticket
           queueNumberEl.textContent = data.queueNumber;
           ticketContainer.classList.add('scale-100');
           ticketModal.classList.remove('hidden');
         } else {
-          throw new Error(data.error || 'Unknown error occurred');
+          throw new Error(data.error || 'Terjadi kesalahan');
         }
       } catch (error) {
-        console.error('Submission error:', error);
-        alert(`Error: ${error.message}. Please try again.`);
+        console.error('Error:', error);
+        alert(`Error: ${error.message}. Silakan coba lagi.`);
       }
     });
 
+    // Close ticket modal
     closeTicketBtn.addEventListener('click', () => {
-      ticketContainer.classList.remove('scale-100');
-      setTimeout(() => {
-        ticketModal.classList.add('hidden');
-      }, 300);
+      closeModal(ticketModal, ticketContainer);
     });
 
     // Close modals when clicking outside
@@ -726,10 +740,7 @@
 
     ticketModal.addEventListener('click', (e) => {
       if (e.target === ticketModal) {
-        ticketContainer.classList.remove('scale-100');
-        setTimeout(() => {
-          ticketModal.classList.add('hidden');
-        }, 300);
+        closeModal(ticketModal, ticketContainer);
       }
     });
 
